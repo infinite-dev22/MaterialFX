@@ -53,191 +53,191 @@ import javafx.stage.Stage;
 
 public class NotificationsController {
 
-	public NotificationsController(Stage stage) {
-		Platform.runLater(() -> {
-			MFXNotificationSystem.instance().initOwner(stage);
-			MFXNotificationCenterSystem.instance().initOwner(stage);
+    public NotificationsController(Stage stage) {
+        Platform.runLater(() -> {
+            MFXNotificationSystem.instance().initOwner(stage);
+            MFXNotificationCenterSystem.instance().initOwner(stage);
 
-			MFXNotificationCenter center = MFXNotificationCenterSystem.instance().getCenter();
-			center.setCellFactory(notification -> new MFXNotificationCell(center, notification) {
-				{
-					setPrefHeight(400);
-				}
-			});
-		});
-	}
+            MFXNotificationCenter center = MFXNotificationCenterSystem.instance().getCenter();
+            center.setCellFactory(notification -> new MFXNotificationCell(center, notification) {
+                {
+                    setPrefHeight(400);
+                }
+            });
+        });
+    }
 
-	@FXML
-	void showTopLeft(ActionEvent event) {
-		MFXNotificationSystem.instance()
-				.setPosition(NotificationPos.TOP_LEFT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showTopLeft(ActionEvent event) {
+        MFXNotificationSystem.instance()
+                .setPosition(NotificationPos.TOP_LEFT)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showTopCenter(ActionEvent event) {
-		MFXNotificationSystem.instance()
-				.setPosition(NotificationPos.TOP_CENTER)
-				.publish(createNotification());
-	}
+    @FXML
+    void showTopCenter(ActionEvent event) {
+        MFXNotificationSystem.instance()
+                .setPosition(NotificationPos.TOP_CENTER)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showTopRight(ActionEvent event) {
-		MFXNotificationSystem.instance()
-				.setPosition(NotificationPos.TOP_RIGHT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showTopRight(ActionEvent event) {
+        MFXNotificationSystem.instance()
+                .setPosition(NotificationPos.TOP_RIGHT)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showBottomLeft(ActionEvent event) {
-		MFXNotificationSystem.instance()
-				.setPosition(NotificationPos.BOTTOM_LEFT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showBottomLeft(ActionEvent event) {
+        MFXNotificationSystem.instance()
+                .setPosition(NotificationPos.BOTTOM_LEFT)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showBottomCenter(ActionEvent event) {
-		MFXNotificationSystem.instance()
-				.setPosition(NotificationPos.BOTTOM_LEFT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showBottomCenter(ActionEvent event) {
+        MFXNotificationSystem.instance()
+                .setPosition(NotificationPos.BOTTOM_LEFT)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showBottomRight(ActionEvent event) {
-		MFXNotificationSystem.instance()
-				.setPosition(NotificationPos.BOTTOM_RIGHT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showBottomRight(ActionEvent event) {
+        MFXNotificationSystem.instance()
+                .setPosition(NotificationPos.BOTTOM_RIGHT)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showTopLeftNC(ActionEvent event) {
-		MFXNotificationCenterSystem.instance()
-				.setPosition(NotificationPos.TOP_LEFT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showTopLeftNC(ActionEvent event) {
+        MFXNotificationCenterSystem.instance()
+                .setPosition(NotificationPos.TOP_LEFT)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showTopCenterNC(ActionEvent event) {
-		MFXNotificationCenterSystem.instance()
-				.setPosition(NotificationPos.TOP_CENTER)
-				.publish(createNotification());
-	}
+    @FXML
+    void showTopCenterNC(ActionEvent event) {
+        MFXNotificationCenterSystem.instance()
+                .setPosition(NotificationPos.TOP_CENTER)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showTopRightNC(ActionEvent event) {
-		MFXNotificationCenterSystem.instance()
-				.setPosition(NotificationPos.TOP_RIGHT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showTopRightNC(ActionEvent event) {
+        MFXNotificationCenterSystem.instance()
+                .setPosition(NotificationPos.TOP_RIGHT)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showBottomLeftNC(ActionEvent event) {
-		MFXNotificationCenterSystem.instance()
-				.setPosition(NotificationPos.BOTTOM_LEFT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showBottomLeftNC(ActionEvent event) {
+        MFXNotificationCenterSystem.instance()
+                .setPosition(NotificationPos.BOTTOM_LEFT)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showBottomCenterNC(ActionEvent event) {
-		MFXNotificationCenterSystem.instance()
-				.setPosition(NotificationPos.BOTTOM_CENTER)
-				.publish(createNotification());
-	}
+    @FXML
+    void showBottomCenterNC(ActionEvent event) {
+        MFXNotificationCenterSystem.instance()
+                .setPosition(NotificationPos.BOTTOM_CENTER)
+                .publish(createNotification());
+    }
 
-	@FXML
-	void showBottomRightNC(ActionEvent event) {
-		MFXNotificationCenterSystem.instance()
-				.setPosition(NotificationPos.BOTTOM_RIGHT)
-				.publish(createNotification());
-	}
+    @FXML
+    void showBottomRightNC(ActionEvent event) {
+        MFXNotificationCenterSystem.instance()
+                .setPosition(NotificationPos.BOTTOM_RIGHT)
+                .publish(createNotification());
+    }
 
-	private INotification createNotification() {
-		ExampleNotification notification = new ExampleNotification();
-		notification.setContentText(RandomUtils.randFromArray(Model.randomText));
-		return notification;
-	}
+    private INotification createNotification() {
+        ExampleNotification notification = new ExampleNotification();
+        notification.setContentText(RandomUtils.randFromArray(Model.randomText));
+        return notification;
+    }
 
-	private static class ExampleNotification extends MFXSimpleNotification {
-		private final StringProperty headerText = new SimpleStringProperty("Notification Header");
-		private final StringProperty contentText = new SimpleStringProperty();
+    private static class ExampleNotification extends MFXSimpleNotification {
+        private final StringProperty headerText = new SimpleStringProperty("Notification Header");
+        private final StringProperty contentText = new SimpleStringProperty();
 
-		public ExampleNotification() {
+        public ExampleNotification() {
 
-			MFXFontIcon fi = new MFXFontIcon();
-			IconDescriptor desc = RandomUtils.randFromArray(Model.notificationsIcons);
-			if (desc instanceof FontAwesomeRegular) {
-				fi.setIconsProvider(IconsProviders.FONTAWESOME_REGULAR);
-			} else if (desc instanceof FontAwesomeBrands) {
-				fi.setIconsProvider(IconsProviders.FONTAWESOME_BRANDS);
-			}
-			fi.setDescription(desc.getDescription());
-			fi.setSize(16);
-			MFXIconWrapper icon = new MFXIconWrapper(fi, 32);
-			Label headerLabel = new Label();
-			headerLabel.textProperty().bind(headerText);
-			MFXIconWrapper readIcon = new MFXIconWrapper("fas-eye", 16, 32);
-			((MFXFontIcon) readIcon.getIcon()).descriptionProperty().bind(Bindings.createStringBinding(
-					() -> (getState() == NotificationState.READ) ? "fas-eye" : "fas-eye-slash",
-					notificationStateProperty()
-			));
-			StackPane.setAlignment(readIcon, Pos.CENTER_RIGHT);
-			StackPane placeHolder = new StackPane(readIcon);
-			placeHolder.setMaxWidth(Double.MAX_VALUE);
-			HBox.setHgrow(placeHolder, Priority.ALWAYS);
-			HBox header = new HBox(10, icon, headerLabel, placeHolder);
-			header.setAlignment(Pos.CENTER_LEFT);
-			header.setPadding(InsetsFactory.of(5, 0, 5, 0));
-			header.setMaxWidth(Double.MAX_VALUE);
+            MFXFontIcon fi = new MFXFontIcon();
+            IconDescriptor desc = RandomUtils.randFromArray(Model.notificationsIcons);
+            if (desc instanceof FontAwesomeRegular) {
+                fi.setIconsProvider(IconsProviders.FONTAWESOME_REGULAR);
+            } else if (desc instanceof FontAwesomeBrands) {
+                fi.setIconsProvider(IconsProviders.FONTAWESOME_BRANDS);
+            }
+            fi.setDescription(desc.getDescription());
+            fi.setSize(16);
+            MFXIconWrapper icon = new MFXIconWrapper(fi, 32);
+            Label headerLabel = new Label();
+            headerLabel.textProperty().bind(headerText);
+            MFXIconWrapper readIcon = new MFXIconWrapper("fas-eye", 16, 32);
+            ((MFXFontIcon) readIcon.getIcon()).descriptionProperty().bind(Bindings.createStringBinding(
+                    () -> (getState() == NotificationState.READ) ? "fas-eye" : "fas-eye-slash",
+                    notificationStateProperty()
+            ));
+            StackPane.setAlignment(readIcon, Pos.CENTER_RIGHT);
+            StackPane placeHolder = new StackPane(readIcon);
+            placeHolder.setMaxWidth(Double.MAX_VALUE);
+            HBox.setHgrow(placeHolder, Priority.ALWAYS);
+            HBox header = new HBox(10, icon, headerLabel, placeHolder);
+            header.setAlignment(Pos.CENTER_LEFT);
+            header.setPadding(InsetsFactory.of(5, 0, 5, 0));
+            header.setMaxWidth(Double.MAX_VALUE);
 
 
-			Label contentLabel = new Label();
-			contentLabel.getStyleClass().add("content");
-			contentLabel.textProperty().bind(contentText);
-			contentLabel.setWrapText(true);
-			contentLabel.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-			contentLabel.setAlignment(Pos.TOP_LEFT);
+            Label contentLabel = new Label();
+            contentLabel.getStyleClass().add("content");
+            contentLabel.textProperty().bind(contentText);
+            contentLabel.setWrapText(true);
+            contentLabel.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            contentLabel.setAlignment(Pos.TOP_LEFT);
 
-			MFXButton action1 = new MFXButton("Action 1");
-			MFXButton action2 = new MFXButton("Action 2");
-			HBox actionsBar = new HBox(15, action1, action2);
-			actionsBar.getStyleClass().add("actions-bar");
-			actionsBar.setAlignment(Pos.CENTER_RIGHT);
-			actionsBar.setPadding(InsetsFactory.all(5));
+            MFXButton action1 = new MFXButton("Action 1");
+            MFXButton action2 = new MFXButton("Action 2");
+            HBox actionsBar = new HBox(15, action1, action2);
+            actionsBar.getStyleClass().add("actions-bar");
+            actionsBar.setAlignment(Pos.CENTER_RIGHT);
+            actionsBar.setPadding(InsetsFactory.all(5));
 
-			BorderPane container = new BorderPane();
-			container.getStyleClass().add("notification");
-			container.setTop(header);
-			container.setCenter(contentLabel);
-			container.setBottom(actionsBar);
-			container.getStylesheets().add(MFXDemoResourcesLoader.load("css/ExampleNotification.css"));
-			container.setMinHeight(200);
-			container.setMaxWidth(400);
+            BorderPane container = new BorderPane();
+            container.getStyleClass().add("notification");
+            container.setTop(header);
+            container.setCenter(contentLabel);
+            container.setBottom(actionsBar);
+            container.getStylesheets().add(MFXDemoResourcesLoader.load("css/ExampleNotification.css"));
+            container.setMinHeight(200);
+            container.setMaxWidth(400);
 
-			setContent(container);
-		}
+            setContent(container);
+        }
 
-		public String getHeaderText() {
-			return headerText.get();
-		}
+        public String getHeaderText() {
+            return headerText.get();
+        }
 
-		public StringProperty headerTextProperty() {
-			return headerText;
-		}
+        public StringProperty headerTextProperty() {
+            return headerText;
+        }
 
-		public void setHeaderText(String headerText) {
-			this.headerText.set(headerText);
-		}
+        public void setHeaderText(String headerText) {
+            this.headerText.set(headerText);
+        }
 
-		public String getContentText() {
-			return contentText.get();
-		}
+        public String getContentText() {
+            return contentText.get();
+        }
 
-		public StringProperty contentTextProperty() {
-			return contentText;
-		}
+        public StringProperty contentTextProperty() {
+            return contentText;
+        }
 
-		public void setContentText(String contentText) {
-			this.contentText.set(contentText);
-		}
-	}
+        public void setContentText(String contentText) {
+            this.contentText.set(contentText);
+        }
+    }
 }
